@@ -78,7 +78,7 @@ class Invoice{
     }
 
     public toString():string{
-        return `Invoice [id=${this.id}, customer=${this.customer.getName()}${this.customer.getId()}${this.customer.getDiscount() * 100}%, amount=${this.amount}, after discount=${this.getAmountAfterDiscount()}]`
+        return `Invoice [id=${this.id}, customer=${this.customer.getName()}(${this.customer.getId()}) ${this.customer.getDiscount() * 100}%, amount=${this.amount}, after discount=${this.getAmountAfterDiscount()}]`
     }
 }
 

@@ -32,14 +32,16 @@ class Circle extends Shape {
     setRadius(radius) {
         this.radius = radius;
     }
+    // คำนวณพื้นที่ของวงกลม
     getArea() {
-        return 2;
+        return Math.PI * Math.pow(this.radius, 2);
     }
+    // คำนวณเส้นรอบวงของวงกลม
     getPerimeter() {
-        return 2;
+        return 2 * Math.PI * this.radius;
     }
     toString() {
-        return ``;
+        return `Circle [Shape[color=${this.getColor()}, filled=${this.isFilled()}], radius=${this.getRadius()}]`;
     }
 }
 class Rectangle extends Shape {
@@ -62,35 +64,41 @@ class Rectangle extends Shape {
     setLength(length) {
         this.length = length;
     }
+    // คำนวณพื้นที่ของสี่เหลี่ยมผืนผ้า
     getArea() {
-        return 2;
+        return this.width * this.length;
     }
+    // คำนวณเส้นรอบวงของสี่เหลี่ยมผืนผ้า
     getPerimeter() {
-        return 2;
+        return 2 * (this.width + this.length);
     }
     toString() {
-        return ``;
+        return `Rectangle [Shape[color=${this.getColor()}, filled=${this.isFilled()}], width=${this.getWidth()}, length=${this.getLength()}]`;
     }
 }
 class Square extends Rectangle {
-    constructor(side, color, filled, width, length) {
-        super(color, filled, width, length);
+    constructor(side, color, filled) {
+        super(color, filled, side, side);
         this.side = side;
     }
     getSide() {
-        return 2;
+        return this.side;
     }
     setSide(side) {
         this.side = side;
+        this.setWidth(side); // เนื่องจาก Square width และ length เท่ากัน
+        this.setLength(side);
     }
-    setWidth(side) {
-        this.side = side;
+    // การคำนวณพื้นที่ของสี่เหลี่ยมจัตุรัส
+    getArea() {
+        return Math.pow(this.side, 2);
     }
-    setLength(side) {
-        this.side = side;
+    // การคำนวณเส้นรอบวงของสี่เหลี่ยมจัตุรัส
+    getPerimeter() {
+        return 4 * this.side;
     }
     toString() {
-        return ``;
+        return `Square [Shape[color=${this.getColor()}, filled=${this.isFilled()}], side=${this.getSide()}]`;
     }
 }
 module.exports = { Shape, Circle, Rectangle, Square };
